@@ -12,4 +12,9 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s WHERE s.name = ?1 ")
     Optional<Student> findStudentsByName(String name);
 
+    @Override
+    void deleteById(Long aLong);
+
+
+
 }

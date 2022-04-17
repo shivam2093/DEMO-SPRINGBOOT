@@ -45,7 +45,9 @@ public class Student {
     public Student() {
 
     }
-
+    public Student(Long id) {
+    this.id = id;
+    }
     public Long getId() {
         return id;
     }

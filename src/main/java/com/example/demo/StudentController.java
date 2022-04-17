@@ -4,6 +4,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PostUpdate;
 import java.util.List;
 
 @RestController
@@ -27,9 +28,20 @@ public class StudentController {
         return studentService.getStudent();
     }
     @PostMapping
-    public void registerNewStudent(
-            @RequestBody Student student){
-        studentService.addNewStudent(student);
+    public void register(@RequestBody Student st){
+        studentService.addNewStudent(st);
     }
+
+    @DeleteMapping(path = "{id}")
+    public void delete(@PathVariable("id") Long id){
+        studentService.deleteStudent(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void update(@PathVariable("id") Long id
+    ,@RequestParam(required = false) String name){
+        studentService.updateStudent(id,name);
+    }
+
 
 }
